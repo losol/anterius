@@ -1,6 +1,14 @@
 import React from "react";
 import Link from "next/link";
-import { Box, Heading, Flex, Text, Button } from "@chakra-ui/core";
+import {
+  Box,
+  Heading,
+  Flex,
+  Text,
+  Button,
+  useColorMode,
+} from "@chakra-ui/core";
+import ToggleLight from "./togglelight";
 
 const MenuItems = ({ children }) => (
   <Text mt={{ base: 4, md: 0 }} mr={6} display="block">
@@ -11,6 +19,9 @@ const MenuItems = ({ children }) => (
 const Nav = ({ article_categories, props, site_settings }) => {
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bgColor = { light: "gray.100", dark: "gray.900" };
+  const color = { light: "gray.700", dark: "gray.100" };
 
   return (
     <>
@@ -20,8 +31,8 @@ const Nav = ({ article_categories, props, site_settings }) => {
         justify="space-between"
         wrap="wrap"
         padding="1.5rem"
-        bg="gray.100"
-        color="gray.900"
+        bg={bgColor[colorMode]}
+        color={color[colorMode]}
         {...props}
       >
         <Flex align="center" mr={5}>
@@ -57,6 +68,7 @@ const Nav = ({ article_categories, props, site_settings }) => {
               </MenuItems>
             );
           })}
+          <ToggleLight />
         </Box>
       </Flex>
     </>

@@ -4,12 +4,15 @@ import Layout from "../../components/layout";
 import Image from "../../components/image";
 import Seo from "../../components/seo";
 import { getMediaUrl } from "../../lib/media";
-import { Heading } from "@chakra-ui/core";
+import { Box, Heading, Text } from "@chakra-ui/core";
 
 const RenderBlock = (block) => {
   switch (block.__component) {
     case "storyblocks.image":
-      return <Image image={block.media} />;
+      if (block.media) {
+        return <Image image={block.media} />;
+      }
+      break;
     case "storyblocks.richtext":
       return <ReactMarkdown source={block.content} />;
   }
@@ -28,11 +31,18 @@ const Article = ({ article, article_categories }) => {
   return (
     <Layout article_categories={article_categories}>
       <Seo seo={seo} />
-      <Heading>{article.title}</Heading>
-      <ReactMarkdown source={article.ingress} escapeHtml={false} />
-      {article.story.map((block) => RenderBlock(block))}
 
-      <p>Publisert: {article.published_at}</p>
+      <Box p="10">
+        <Heading as="h1" pt="20" pb="10" size="2xl">
+          {article.title}
+        </Heading>
+        <Text>
+          <ReactMarkdown source={article.ingress} escapeHtml={false} />
+        </Text>
+
+        {article.story.map((block) => RenderBlock(block))}
+        <p>Publisert: {article.published_at}</p>
+      </Box>
     </Layout>
   );
 };
