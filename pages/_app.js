@@ -4,7 +4,8 @@ import "../assets/css/style.css";
 import { createContext } from "react";
 import { getMediaUrl } from "../lib/media";
 import { fetchAPI } from "../lib/api";
-import { ThemeProvider, theme, CSSReset } from "@chakra-ui/core";
+import { ColorModeProvider, ThemeProvider, CSSReset } from "@chakra-ui/core";
+import SiteTheme from "../components/siteTheme";
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({});
@@ -16,9 +17,11 @@ const MyApp = ({ Component, pageProps }) => {
     <>
       <Head></Head>
       <GlobalContext.Provider value={siteSettings}>
-        <ThemeProvider theme={theme}>
-          <CSSReset />
-          <Component {...pageProps} />
+        <ThemeProvider theme={SiteTheme}>
+          <ColorModeProvider>
+            <CSSReset />
+            <Component {...pageProps} />
+          </ColorModeProvider>
         </ThemeProvider>
       </GlobalContext.Provider>
     </>
