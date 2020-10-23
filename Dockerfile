@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:lts-alpine3.10
 
 WORKDIR /app
 
@@ -8,5 +8,6 @@ RUN npm install
 
 # Copying, build, run!
 COPY . .
-RUN npm run build
-CMD [ "npm", "start" ]
+RUN yarn build
+EXPOSE 3000
+CMD [ "yarn", "start" ]
