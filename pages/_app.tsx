@@ -30,7 +30,6 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <>
-      <Head></Head>
       <GlobalContext.Provider value={siteSettings}>
         <ThemeProvider theme={SiteTheme}>
           <ColorModeProvider>
