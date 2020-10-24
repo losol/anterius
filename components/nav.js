@@ -69,12 +69,8 @@ const Nav = ({ article_categories, props, site_settings }) => {
       >
         {article_categories.map((category) => {
           return (
-            <ListItem py="5">
-              <Link
-                key="{category.slug}"
-                as={`/category/${category.slug}`}
-                href="/category/[id]"
-              >
+            <ListItem py="5" key="{category.slug}">
+              <Link as={`/category/${category.slug}`} href="/category/[id]">
                 {category.name}
               </Link>
             </ListItem>

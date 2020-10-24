@@ -15,7 +15,9 @@ const Card = ({ article }) => {
               )}
             </Box>
             <Box d="flex" alignItems="baseline">
-              <Heading>{article.title}</Heading>
+              <Heading as="h2" size="md">
+                {article.title}
+              </Heading>
             </Box>
           </Box>
         </Box>
