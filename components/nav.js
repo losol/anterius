@@ -40,7 +40,11 @@ const Nav = ({ article_categories, props, site_settings }) => {
         {...props}
       >
         <Flex align="center" mr={5}>
-          <Heading as="h1" size="xl" letterSpacing={"-.1rem"}>
+          <Heading
+            as="h1"
+            fontSize={["lg", "lg", "lg", "lg"]}
+            letterSpacing={"-.1rem"}
+          >
             <Link href="/">{site_settings.title}</Link>
           </Heading>
         </Flex>
