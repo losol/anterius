@@ -24,7 +24,7 @@ const Nav = ({ article_categories, props, site_settings }) => {
   const handleToggle = () => setShow(!show);
   const { colorMode, toggleColorMode } = useColorMode();
   const bgColor = { light: "white", dark: "gray.900" };
-  const altBgColor = { light: "gray.100", dark: "gray.700" };
+  const altBgColor = { light: "gray.200", dark: "gray.700" };
   const color = { light: "gray.700", dark: "gray.100" };
 
   return (
