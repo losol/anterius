@@ -10,11 +10,11 @@ const RenderBlock = (block) => {
   switch (block.__component) {
     case "storyblocks.image":
       if (block.media) {
-        return <Image image={block.media} />;
+        return <Image image={block.media} key={block.id} />;
       }
       break;
     case "storyblocks.richtext":
-      return <ReactMarkdown source={block.content} />;
+      return <ReactMarkdown source={block.content} key={block.id} />;
   }
 };
 
@@ -33,7 +33,7 @@ const Article = ({ article, article_categories }) => {
       <Seo seo={seo} />
 
       <Box p="10">
-        <Heading as="h1" pt="20" pb="10" size="2xl">
+        <Heading as="h1" pt="20" pb="10" size="4xl">
           {article.title}
         </Heading>
         <Text>
