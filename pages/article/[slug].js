@@ -10,11 +10,15 @@ const RenderBlock = (block) => {
   switch (block.__component) {
     case "storyblocks.image":
       if (block.media) {
-        return <Image image={block.media} />;
+        return <Image image={block.media} key={block.id} />;
       }
       break;
     case "storyblocks.richtext":
-      return <ReactMarkdown source={block.content} />;
+      return (
+        <Box py="5" className="richtext">
+          <ReactMarkdown source={block.content} key={block.id} />
+        </Box>
+      );
   }
 };
 
@@ -32,16 +36,21 @@ const Article = ({ article, article_categories }) => {
     <Layout article_categories={article_categories}>
       <Seo seo={seo} />
 
-      <Box p="10">
-        <Heading as="h1" pt="20" pb="10" size="2xl">
+      <Box p={["5", "16", "24", "48"]}>
+        <Heading
+          as="h1"
+          paddingTop="20"
+          pb="5"
+          fontSize={["2xl", "3xl", "4xl", "5xl"]}
+        >
           {article.title}
         </Heading>
-        <Text>
-          <ReactMarkdown source={article.ingress} escapeHtml={false} />
+        <Text paddingY="5">
+          <ReactMarkdown source={article.ingress} />
         </Text>
 
         {article.story.map((block) => RenderBlock(block))}
-        <p>Publisert: {article.published_at}</p>
+        <Text paddingTop="16">Publisert: {article.published_at}</Text>
       </Box>
     </Layout>
   );
