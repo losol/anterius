@@ -1,11 +1,13 @@
+import "../assets/css/style.css";
+
+import { CSSReset, ColorModeProvider, ThemeProvider } from "@chakra-ui/core";
+
 import App from "next/app";
 import Head from "next/head";
-import "../assets/css/style.css";
-import { createContext } from "react";
-import { getMediaUrl } from "../lib/media";
-import { fetchAPI } from "../lib/api";
-import { ColorModeProvider, ThemeProvider, CSSReset } from "@chakra-ui/core";
 import SiteTheme from "../components/siteTheme";
+import { createContext } from "react";
+import { fetchAPI } from "../lib/api";
+import { getMediaUrl } from "../lib/media";
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({});
