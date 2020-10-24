@@ -1,11 +1,18 @@
+import "../assets/css/style.css";
+
+import {
+  CSSReset,
+  ColorModeProvider,
+  ITheme,
+  ThemeProvider,
+  theme,
+} from "@chakra-ui/core";
+
 import App from "next/app";
 import Head from "next/head";
-import "../assets/css/style.css";
-import { createContext } from "react";
-import { getMediaUrl } from "../lib/media";
-import { fetchAPI } from "../lib/api";
-import { ColorModeProvider, theme, ITheme, ThemeProvider, CSSReset } from "@chakra-ui/core";
 import SiteTheme from "../components/siteTheme";
+import { createContext } from "react";
+import { fetchAPI } from "../lib/api";
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({});
@@ -15,14 +22,14 @@ const cssResetConfig = (theme: ITheme) => ({
     color: theme.colors.gray[900],
     bg: theme.colors.gray[100],
     borderColor: theme.colors.gray[300],
-    placeholderColor: theme.colors.gray[500]
+    placeholderColor: theme.colors.gray[500],
   },
   dark: {
     color: theme.colors.whiteAlpha[900],
     bg: theme.colors.gray[800],
     borderColor: theme.colors.whiteAlpha[300],
-    placeholderColor: theme.colors.whiteAlpha[400]
-  }
+    placeholderColor: theme.colors.whiteAlpha[400],
+  },
 });
 
 const MyApp = ({ Component, pageProps }) => {
