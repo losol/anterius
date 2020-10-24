@@ -4,22 +4,36 @@ import "../assets/css/style.css";
 import { createContext } from "react";
 import { getMediaUrl } from "../lib/media";
 import { fetchAPI } from "../lib/api";
-import { ColorModeProvider, ThemeProvider, CSSReset } from "@chakra-ui/core";
+import { ColorModeProvider, theme, ITheme, ThemeProvider, CSSReset } from "@chakra-ui/core";
 import SiteTheme from "../components/siteTheme";
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({});
+
+const cssResetConfig = (theme: ITheme) => ({
+  light: {
+    color: theme.colors.gray[900],
+    bg: theme.colors.gray[100],
+    borderColor: theme.colors.gray[300],
+    placeholderColor: theme.colors.gray[500]
+  },
+  dark: {
+    color: theme.colors.whiteAlpha[900],
+    bg: theme.colors.gray[800],
+    borderColor: theme.colors.whiteAlpha[300],
+    placeholderColor: theme.colors.whiteAlpha[400]
+  }
+});
 
 const MyApp = ({ Component, pageProps }) => {
   const { siteSettings } = pageProps;
 
   return (
     <>
-      <Head></Head>
       <GlobalContext.Provider value={siteSettings}>
         <ThemeProvider theme={SiteTheme}>
           <ColorModeProvider>
-            <CSSReset />
+            <CSSReset config={cssResetConfig} />
             <Component {...pageProps} />
           </ColorModeProvider>
         </ThemeProvider>
