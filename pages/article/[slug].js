@@ -60,8 +60,8 @@ const Article = ({ article, article_categories }) => {
   const featuredImage = article.featured_image?.media;
 
   const seo = {
-    metaTitle: article.title,
-    metaDescription: article.summary,
+    title: article.title,
+    description: article.summary,
     featuredImage: article.featured_image?.media,
     article: true,
   };
@@ -73,7 +73,7 @@ const Article = ({ article, article_categories }) => {
       <Box p={["5", "16", "24", "48"]}>
         <Heading
           as="h1"
-          paddingTop="20"
+          paddingTop="8"
           pb="3"
           fontSize={headingFontsizes["h1"]}
         >

@@ -1,27 +1,20 @@
-import React from "react";
+import { List, ListItem, SimpleGrid } from "@chakra-ui/core";
+
 import Card from "./card";
+import React from "react";
 
 const Articles = ({ articles }) => {
-  const leftArticlesCount = Math.ceil(articles.length / 5);
-  const leftArticles = articles.slice(0, leftArticlesCount);
-  const rightArticles = articles.slice(leftArticlesCount, articles.length);
-
   return (
     <>
-      <div id="left">
-        {leftArticles.map((article, i) => {
+      <SimpleGrid as="ul" columns={[1, 2, 3]} spacing={1}>
+        {articles.map((article, i) => {
           return (
-            <Card article={article} key={`article__left__${article.slug}`} />
+            <ListItem p="5" display="block">
+              <Card article={article} key={article.slug} height="280px" />
+            </ListItem>
           );
         })}
-      </div>
-      <div id="right">
-        {rightArticles.map((article, i) => {
-          return (
-            <Card article={article} key={`article__left__${article.slug}`} />
-          );
-        })}
-      </div>
+      </SimpleGrid>
     </>
   );
 };
